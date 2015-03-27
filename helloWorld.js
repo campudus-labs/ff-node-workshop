@@ -7,9 +7,19 @@ var b = 3;
 
 console.log('a+b=' + a + b);
 
-var i;
+fs.readFile('test.txt', 'utf8', read);
+console.log('fertig mit aktionen');
 
-for (i = 0; i < 20; i++) {
-  fs.appendFileSync('test.txt', 'hallo nochmal: '+i+'\n');
+function read(err, res) {
+  console.log('error=' + err);
+  if (err) {
+    console.log('error:' + err);
+  } else {
+    fs.writeFile('test2.txt', 'result=' + res, wrote);
+    console.log('io fertig=' + res);
+  }
 }
-console.log('fertig');
+
+function wrote(err) {
+  console.log('jetzt wirklich fertig');
+}
