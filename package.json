@@ -4,7 +4,8 @@
   "description": "",
   "main": "calculator.js",
   "dependencies": {
-    "express": "^4.12.3"
+    "express": "^4.12.3",
+    "handlebars": "^3.0.1"
   },
   "devDependencies": {},
   "scripts": {
