@@ -2,7 +2,7 @@
   "name": "ff-nodejs-workshop",
   "version": "1.0.0",
   "description": "",
-  "main": "calculator.js",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.12.3",
     "handlebars": "^3.0.1"

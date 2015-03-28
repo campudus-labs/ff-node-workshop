@@ -12,6 +12,14 @@ fs.readFile(templateFile, 'utf8', function (err, result) {
   }, 10000);
 });
 
+app.use(function(err,req, res, next){
+  if(!hiTemplate){
+    res.send('server not ready');
+  }else {
+    next();
+  }
+});
+
 var helloRouter = express.Router();
 helloRouter.get('/olli', function (req, res, next) {
   console.log('got a request:' + req.path);
@@ -25,6 +33,19 @@ helloRouter.get('/', function (req, res, next) {
   res.send('hello monsieur undefined');
 });
 
+helloRouter.use('/:name', function (err, req, res, next) {
+  if (err) {
+    console.log('error1! ' + err);
+  }
+//  next(err);
+});
+helloRouter.use('/:name', function (err, req, res, next) {
+  if (err) {
+    console.log('error2! ' + err);
+    res.send('oh oh, error2 !' + err);
+  }
+  next(err);
+});
 app.use('/hello', helloRouter);
 
 app.use('/something', function (req, res, next) {
